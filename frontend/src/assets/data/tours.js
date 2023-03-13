@@ -9,10 +9,10 @@ import tourImg07 from "../images/tour-img07.jpg";
 const tours = [
   {
     id: "01",
-    title: "Westminister Bridge",
-    city: "London",
+    title: "núi Bà Đen",
+    city: "vietnam",
     distance: 300,
-    price: 99,
+    price: 99.999,
     maxGroupSize: 10,
     desc: "this is the description",
     reviews: [
@@ -27,10 +27,10 @@ const tours = [
   },
   {
     id: "02",
-    title: "Bali, Indonesia",
-    city: "Indonesia",
+    title: "núi Bà Đen",
+    city: "vietnam",
     distance: 400,
-    price: 99,
+    price: 99.999,
     maxGroupSize: 8,
     desc: "this is the description",
     reviews: [
@@ -45,10 +45,10 @@ const tours = [
   },
   {
     id: "03",
-    title: "Snowy Mountains, Thailand",
-    city: "Thailand",
+    title: "núi Bà Đen",
+    city: "vietnam",
     distance: 500,
-    price: 99,
+    price: 99.999,
     maxGroupSize: 8,
     desc: "this is the description",
     reviews: [
@@ -63,10 +63,10 @@ const tours = [
   },
   {
     id: "04",
-    title: "Beautiful Sunrise, Thailand",
-    city: "Thailand",
+    title: "núi Bà Đen",
+    city: "vietnam",
     distance: 500,
-    price: 99,
+    price: 99.999,
     maxGroupSize: 8,
     desc: "this is the description",
     reviews: [
@@ -81,10 +81,10 @@ const tours = [
   },
   {
     id: "05",
-    title: "Nusa Pendia Bali, Indonesia",
-    city: "Indonesia",
+    title: "núi Bà Đen",
+    city: "vietnam",
     distance: 500,
-    price: 99,
+    price: 99.999,
     maxGroupSize: 8,
     desc: "this is the description",
     reviews: [
@@ -99,10 +99,10 @@ const tours = [
   },
   {
     id: "06",
-    title: "Cherry Blossoms Spring",
-    city: "Japan",
+    title: "núi Bà Đen",
+    city: "vietnam",
     distance: 500,
-    price: 99,
+    price: 99.999,
     maxGroupSize: 8,
     desc: "this is the description",
     reviews: [
@@ -117,10 +117,10 @@ const tours = [
   },
   {
     id: "07",
-    title: "Holmen Lofoten",
-    city: "France",
+    title: "núi Bà Đen",
+    city: "vietnam",
     distance: 500,
-    price: 99,
+    price: 99.999,
     maxGroupSize: 8,
     desc: "this is the description",
     reviews: [
@@ -135,17 +135,14 @@ const tours = [
   },
   {
     id: "08",
-    title: "Snowy Mountains, Thailand",
-    city: "Thailand",
+    title: "núi Bà Đen",
+    city: "vietnam",
     distance: 500,
-    price: 99,
+    price: 99.999,
     maxGroupSize: 8,
     desc: "this is the description",
     reviews: [
-      {
-        name: "jhon doe",
-        rating: 4.6,
-      },
+  
     ],
     avgRating: 4.5,
     photo: tourImg03,
