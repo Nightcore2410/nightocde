@@ -9,7 +9,10 @@ import Subtitle from '../shared/Subtitle'
 import SearchBar from '../shared/SearchBar'
 import ServiceList from '../services/ServiceList'
 import FeaturedTourList from '../components/Featured-tours/FeaturedTourList'
-
+import experienceImg from '../assets/images/logo1.png'
+import MasonryImagesGallery from '../components/Image-gallery/MasonryImagesGallery'
+import Testimonials from '../components/Testimonial/Testimonials'
+import Newsletter from '../shared/Newsletter'
 const Home = () => {
   return <>
   <section>
@@ -78,14 +81,80 @@ const Home = () => {
       </Col>
       <FeaturedTourList/>
     </Row>
+  </Container>  
+</section>
+<section>
+  <Container>
+    <Row>
+      <Col lg= '6 '>
+        <div className="experience__content">
+          <Subtitle subtitle={'Experience'}/>
+          <h2>with our all experience<br/>we will serve you</h2>
+          <p>
+            Lorem isum dolor sit amet. consectetur adipisicing elit.
+            <br/>
+            Quas aliquam , hic tempora inventore suscipit unde
+          </p>
+        </div>
+        <div className="counter__wrapper d-flex align-items-center gap-5">
+        <div className="counter__box">
+          <span>20k+</span>
+          <h6>Successful</h6>
+        </div>
+        <div className="counter__box">
+          <span>6k+</span>
+          <h6>Regular clients</h6>
+        </div>
+        <div className="counter__box">
+          <span>10</span>
+          <h6>year experience</h6>
+          </div>
+        </div>
+      </Col>
+      <Col lg= '6 '>
+      <div className="experience__img">
+      <img src={experienceImg} alt="" />
+      </div>
+      </Col>
+    </Row>
   </Container>
-
-  
 </section>
 
+<section>
+  <Container>
+    <Row>
+      <Col lg='12'>
+        <Subtitle subtitle={'Gallery'}/>
+        <h2 className='gallery__title'>
+        Hãy ghé thăm bộ sưu tập ảnh du lịch của khách hàng của chúng tôi.
+        </h2>
+      </Col>
+      <Col lg='12'>
+      <MasonryImagesGallery/>
+      </Col>
+    </Row>
+  </Container>
+</section>
+
+<section>
+  <Container>
+    <Row>
+      <Col lg='12'>
+        <Subtitle subtitle={'Fan love'}/>
+        <h2 className='testimonial__title'>
+        Những fan hâm mộ của chúng tôi nói gì về chúng tôi?
+        </h2>
+      </Col>
+      <Col lg='12'>
+      <Testimonials/>
+      </Col>
+    </Row>
+  </Container>
+</section>
+<Newsletter/>
+
+
   </>
-    
-  
 };
 
 export default Home

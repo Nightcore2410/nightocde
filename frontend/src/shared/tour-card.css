@@ -4,7 +4,7 @@
 }
 .card {
     border: none !important;
-    box-shadow: rgba(0, 0, 0, 0.2) 0px 18px 50px -10px;
+    box-shadow: rgba(0, 0, 0, 0.671) 0px 18px 50px -10px;
 }
 
 .tour__img{
@@ -36,9 +36,10 @@
     font-weight: 500;
     font-size: 0.9rem;
 }
-.tour__ratingi,
+.tour__rating,
 .tour__location i{
     font-size: 1rem;
+    
 }
 .tour__title a{
     text-decoration: none;

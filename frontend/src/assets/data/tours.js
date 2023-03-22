@@ -6,15 +6,19 @@ import tourImg05 from "../images/tour-img05.jpg";
 import tourImg06 from "../images/tour-img06.jpg";
 import tourImg07 from "../images/tour-img07.jpg";
 
+
+
+
 const tours = [
   {
     id: "01",
-    title: "núi Bà Đen",
+    title: "Núi Bà Đen",
     city: "vietnam",
     distance: 300,
-    price: 99.999,
-    maxGroupSize: 10,
-    desc: "this is the description",
+    address:'somewhere',
+    price: 100000,
+    maxGroupSize: 5,
+    desc: "Đẹp Đẹp Đẹp Đẹp Đẹp Đẹp Đẹp Đẹp Đẹp Đẹp Đẹp Đẹp Đẹp Đẹp Đẹp Đẹp Đẹp Đẹp Đẹp Đẹp Đẹp Đẹp",
     reviews: [
       {
         name: "jhon doe",
@@ -27,13 +31,22 @@ const tours = [
   },
   {
     id: "02",
-    title: "núi Bà Đen",
+    title: "Núi Bà Đen",
     city: "vietnam",
     distance: 400,
-    price: 99.999,
+    address:'somewhere',
+    price: 100.000,
     maxGroupSize: 8,
     desc: "this is the description",
     reviews: [
+      {
+        name: "jhon doe",
+        rating: 4.6,
+      },
+      {
+        name: "jhon doe",
+        rating: 4.6,
+      },
       {
         name: "jhon doe",
         rating: 4.6,
@@ -45,10 +58,11 @@ const tours = [
   },
   {
     id: "03",
-    title: "núi Bà Đen",
+    title: "Núi Bà Đen",
     city: "vietnam",
     distance: 500,
-    price: 99.999,
+    address:'somewhere',
+    price: 100.000,
     maxGroupSize: 8,
     desc: "this is the description",
     reviews: [
@@ -63,10 +77,11 @@ const tours = [
   },
   {
     id: "04",
-    title: "núi Bà Đen",
+    title: "Núi Bà Đen",
     city: "vietnam",
     distance: 500,
-    price: 99.999,
+    address:'somewhere',
+    price: 100.000,
     maxGroupSize: 8,
     desc: "this is the description",
     reviews: [
@@ -81,10 +96,11 @@ const tours = [
   },
   {
     id: "05",
-    title: "núi Bà Đen",
+    title: "Núi Bà Đen",
     city: "vietnam",
     distance: 500,
-    price: 99.999,
+    address:'somewhere',
+    price:100.000,
     maxGroupSize: 8,
     desc: "this is the description",
     reviews: [
@@ -99,10 +115,11 @@ const tours = [
   },
   {
     id: "06",
-    title: "núi Bà Đen",
+    title: "Núi Bà Đen",
     city: "vietnam",
     distance: 500,
-    price: 99.999,
+    address:'somewhere',
+    price: 100.000,
     maxGroupSize: 8,
     desc: "this is the description",
     reviews: [
@@ -117,10 +134,11 @@ const tours = [
   },
   {
     id: "07",
-    title: "núi Bà Đen",
+    title: "Núi Bà Đen",
     city: "vietnam",
     distance: 500,
-    price: 99.999,
+    address:'somewhere',
+    price: 100.000,
     maxGroupSize: 8,
     desc: "this is the description",
     reviews: [
@@ -135,10 +153,11 @@ const tours = [
   },
   {
     id: "08",
-    title: "núi Bà Đen",
+    title: "Núi Bà Đen",
     city: "vietnam",
     distance: 500,
-    price: 99.999,
+    address:'somewhere',
+    price: 100.000,
     maxGroupSize: 8,
     desc: "this is the description",
     reviews: [

@@ -8,6 +8,7 @@
   --text-color: #2B3A55;
   --font-name: "Montserrat", sans-serif;
   --subtitle-font-name: "Island Moments", cursive;
+  --text-color2:#FFB26B;
 }
 
 * {
@@ -77,11 +78,11 @@ ul {
   background: var(--secondary-color);
   font-family: var(--subtitle-font-name);
   width: max-content;
-  padding: 0px 0.5rem;
+  padding: 0px 0.7rem;
   padding-right: 1rem;
 
   border-radius: 50px;
   font-weight: 500;
-  font-size: 1.7rem;
+  font-size: 2rem;
   color: var(--heading-color);
 }
