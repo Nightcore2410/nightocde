@@ -1,12 +1,15 @@
 import React,{useRef} from 'react'
 import './search-bar.css'
 import{Col, Form, FormGroup} from "reactstrap"
+import { BASE_URL } from '../utlis/config';
+import { useNavigate } from 'react-router-dom';
 
 const SearchBar = () => {
     const loactionRef = useRef('')
     const distanceRef = useRef(0)
     const maxGroupSizeRef = useRef(0)
-    const searchHandlef=()=>{
+    const navigate = useNavigate ()
+    const searchHandlef= async()=>{
         const loaction =loactionRef.current.value 
         const distance =distanceRef.current.value 
         const maxGroupSize =maxGroupSizeRef.current.value 
@@ -14,7 +17,11 @@ const SearchBar = () => {
         {
             return alert("tất cả thông tin tìm kiếm ")
         }
-    }
+        const res = await fetch(`${BASE_URL}/tours/search/getTourBySearch?city=${loaction}&distance=${distance}&maxGroupSize=${maxGroupSize}`)
+        if(!res.ok) alert ('Something went wrong')
+        const result = await res.json()
+        navigate(`/tours/search?city=${loaction}&distance=${distance}&maxGroupSize=${maxGroupSize}`,{state: result.data})
+    }   
   return <Col lg ='12'>
     <div className='search__bar'>
         <Form className='d-flex align-items-center gap-4'>

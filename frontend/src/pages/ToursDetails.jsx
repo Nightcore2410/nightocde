@@ -1,19 +1,20 @@
-import React ,{useRef ,useState} from 'react'
+import React ,{useEffect, useRef ,useState} from 'react'
 import '../styles/tour-details.css'
 import { Container,Row,Col ,Form,ListGroup } from 'reactstrap';
 import{useParams}from 'react-router-dom'
-import tourData from '../assets/data/tours'
 import calculateAvgRating from './../utlis/avgRating'
 import avatar from'../assets/images/avatar.jpg'
 import Booking from '../components/Booking/Booking';
-import Newsletter from '../shared/Newsletter'
+import Newsletter from '../shared/Newsletter';
+import { BASE_URL } from '../utlis/config';
+import useFetch from '../hooks/useFetch';
 
 const ToursDetails = () => {
   const {id} =useParams()
   const reviewMsgRef = useRef ('');
   const[ tourRating , setTourRating ] = useState (null);
   /// đây là dữ liệu tĩnh sau này chúng ta sẽ gọi API của mình và tải dữ liệu của chúng ta từ cơ sở dữ liệu
-  const tour = tourData.find(tour => tour.id===id)
+  const{data:tour,loading,error} = useFetch (`${BASE_URL}/tours/${id}`)
   ///hủy cấu trúc các thuộc tính khỏi đối tượng tham quan
   const{photo,title , desc, price , reviews, city ,address, distance , maxGroupSize} = tour;
   const{totalRating,avgRating} = calculateAvgRating (reviews);
@@ -22,15 +23,24 @@ const ToursDetails = () => {
   const submitHandler = e => {
     e.preventDefault();
     const reviewText = reviewMsgRef.current.value;
-    alert( reviewText + tourRating);
+    
     // gọi api
-  }
-
+  };
+  useEffect (()=>{
+    window.scrollTo(0,0)
+  }, [tour])
   return (
     <>
     <section>
       <Container>
-        <Row>
+      {
+      loading && <h4 className='text-center pt-5'>Loanding.............</h4>
+      }
+      {
+      error && <h4 className='text-center pt-5'>{error}</h4>
+      }
+        {!loading && !error &&(
+          <Row>
           <Col lg="8">
             <div className='tour__content'>
               <img src={photo} alt="" />
@@ -59,7 +69,7 @@ const ToursDetails = () => {
                 <div className=" tour__reviews mt-4">
                 <h4>Reviews ({ reviews?.length} reviews)</h4>
 
-                <form onSubmit={submitHandler} >
+                <Form onSubmit={submitHandler} >
                   <div className="d-flex align-items-center gap-3 mb-4 rating__group ">
                     <span onClick={()=> setTourRating(1)}> 1 <i class="ri-star-fill"></i></span>
                     <span onClick={()=> setTourRating(2)}>2 <i class="ri-star-fill"></i></span>
@@ -77,7 +87,7 @@ const ToursDetails = () => {
                     >
                       Submit</button>
                   </div>
-                </form>
+                </Form>
                 <ListGroup className="user__reviews">
                   {
                     reviews?.map(reviews =>(
@@ -107,6 +117,8 @@ const ToursDetails = () => {
           <Booking tour={tour} avgRating = {avgRating}/>
           </Col>
         </Row> 
+        )}
+        
       </Container>
     </section>
     <Newsletter />

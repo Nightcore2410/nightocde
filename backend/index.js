@@ -4,9 +4,17 @@ import mongoose  from 'mongoose'
 import cors from 'cors'
 import cookieParser from 'cookie-parser'
 import tourRoute from './routers/tours.js'
+import userRoute from './routers/users.js'
+import authRoute from './routers/auth.js'
+import reviewRoute from './routers/reviews.js'
+import bookingRoute from './routers/booking.js'
 dotenv.config();
 const app = express();
 const port = process.env.PORT || 8000;
+const corsOptions = {
+    origin:true,
+    credentials:true,
+}
 //kết nối cơ sở dữ liệu
 mongoose.set('strictQuery',false)
 const connect = async ()=>{
@@ -24,9 +32,14 @@ const connect = async ()=>{
 
 //phần mềm trung gian
 app.use(express.json());
-app.use(cors());
+app.use(cors(corsOptions));
 app.use(cookieParser());
-app.use("/tours",tourRoute);
+app.use("/api/v1/auth",authRoute);
+app.use("/api/v1/tours",tourRoute);
+app.use("/api/v1/users",userRoute);
+app.use("/api/v1/review",reviewRoute);
+app.use("/api/v1/booking",bookingRoute);
+
 
 app.listen(port,()=>{
     connect();

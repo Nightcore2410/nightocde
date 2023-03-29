@@ -7,10 +7,6 @@ const Booking = ({ tour, avgRating }) => {
     const { price, reviews } = tour;
     const navigate = useNavigate ()
 
-
-
-  
-  
     const [credentials, setCredentials] = useState({
         userID: '01',
         userEmail: 'example@gmail.com',
@@ -23,11 +19,11 @@ const Booking = ({ tour, avgRating }) => {
     const handleChange = (e) => {
         setCredentials((prev) => ({ ...prev, [e.target.id]: e.target.value }));
     };
-    const serviceFee = 10000
+    const serviceFee = 10
     
     const totalAmount = Number (price) * Number (credentials.guestSize) + Number (serviceFee)
-    const formattedprice = price.toLocaleString("vi-VN");
-    const formattedtotalAmount = totalAmount.toLocaleString("vi-VN");
+    //const formattedprice = price.toLocaleString("vi-VN");
+    //const formattedtotalAmount = totalAmount.toLocaleString("vi-VN");
     // Gửi dữ liệu đến máy chủ
     const handleClick = (e) => {
         e.preventDefault();
@@ -39,7 +35,7 @@ const Booking = ({ tour, avgRating }) => {
     <div className="booking">
       <div className="booking__top d-flex align-items-center justify-content-between">
         <h3>
-          {formattedprice} VND<span>/Mỗi người</span>
+          {totalAmount} VND<span>/Mỗi người</span>
         </h3>
         <span className="tour__rating d-flex align-items-center">
           <i className="ri-star-half-fill"></i>
@@ -89,9 +85,9 @@ const Booking = ({ tour, avgRating }) => {
         <ListGroup>
           <ListGroupItem className="border-0 px-0">
             <h5 className="d-flex align-items-center gap-2">
-              {formattedprice} VND <i className="ri-close-circle-fill"></i> Một người
+              {totalAmount} VND <i className="ri-close-circle-fill"></i> Một người
             </h5>
-            <span>{formattedprice} VND</span>
+            <span>{totalAmount} VND</span>
           </ListGroupItem>
           <ListGroupItem className="border-0 px-0">
             <h5>VAT</h5>
@@ -99,7 +95,7 @@ const Booking = ({ tour, avgRating }) => {
           </ListGroupItem>
           <ListGroupItem className="border-0 px-0 total">
             <h5>tổng cộng</h5>
-            <span>{formattedtotalAmount} VND</span>
+            <span>{totalAmount} VND</span>
           </ListGroupItem>
         </ListGroup>
         <Button className="btn primary__btn w-100 mt-4" onClick={handleClick}>
