@@ -1,4 +1,4 @@
-import React ,{useEffect, useRef ,useState} from 'react'
+import React ,{useEffect, useRef ,useState, useContext} from 'react'
 import '../styles/tour-details.css'
 import { Container,Row,Col ,Form,ListGroup } from 'reactstrap';
 import{useParams}from 'react-router-dom'
@@ -8,11 +8,13 @@ import Booking from '../components/Booking/Booking';
 import Newsletter from '../shared/Newsletter';
 import { BASE_URL } from '../utlis/config';
 import useFetch from '../hooks/useFetch';
+import { AuthContext } from '../context/AuthContext';
 
 const ToursDetails = () => {
   const {id} =useParams()
   const reviewMsgRef = useRef ('');
   const[ tourRating , setTourRating ] = useState (null);
+  const {user} = useContext(AuthContext)
   /// đây là dữ liệu tĩnh sau này chúng ta sẽ gọi API của mình và tải dữ liệu của chúng ta từ cơ sở dữ liệu
   const{data:tour,loading,error} = useFetch (`${BASE_URL}/tours/${id}`)
   ///hủy cấu trúc các thuộc tính khỏi đối tượng tham quan
@@ -20,12 +22,37 @@ const ToursDetails = () => {
   const{totalRating,avgRating} = calculateAvgRating (reviews);
 
   const options = {day:'numeric' , month:'long' , year:'numeric'};
-  const submitHandler = e => {
+  const submitHandler = async e => {
     e.preventDefault();
     const reviewText = reviewMsgRef.current.value;
-    
-    // gọi api
-  };
+    try {
+      if(!user || user===undefined || user===null){
+        alert('Please sign in')
+      }
+      const reviewObj ={
+        username:user?.username,
+        reviewText,
+        rating:tourRating
+      }
+      const res = await fetch(`${BASE_URL}/review/${id}`,{
+        method:'post',
+        headers:{
+          'content-type':'application/json'
+        },
+        credentials:'include',
+        body:JSON.stringify(reviewObj)
+      })
+
+     const result = await res.json()
+     if (!res.ok) {
+      alert(result.message)
+     }
+     alert(result.message)
+      
+    } catch (err) {
+      alert(err.message)
+    }
+  }
   useEffect (()=>{
     window.scrollTo(0,0)
   }, [tour])
@@ -96,15 +123,15 @@ const ToursDetails = () => {
                         <div className="w-100">
                           <div className=" d-flex align-items-center justify-content-between">
                             <div>
-                              <h5>Nightcore</h5>
-                              <p>{new Date("3/17/2023").toLocaleDateString("en-US",options )}  </p>
+                              <h5>{reviews.username}</h5>
+                              <p>{new Date(reviews.createdAt).toLocaleDateString("en-US",options )}  </p>
                             </div>
                             <span className="d-flex align-items-center">
-                               5 <i class="ri-star-fill"></i>
+                               {reviews.rating} <i class="ri-star-fill"></i>
                             </span>
                             
                           </div>
-                          <h6>tour hay tour tuyệt vời</h6>
+                          <h6>{reviews.reviewText}</h6>
                         </div>
                       </div>
                     ))
