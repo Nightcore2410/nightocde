@@ -3,7 +3,7 @@ import '../styles/home.css'
 import { Container,Row,Col } from 'reactstrap'
 import heroImg from'../assets/images/hero-img04.jpg'
 import heroImg02 from'../assets/images/hero-img03.jpg'
-import heroVideo from'../assets/images/hero-video.mp4'
+import heroVideo from'../assets/images/video1.mp4'
 import worldImg from '../assets/images/mountain.png'
 import Subtitle from '../shared/Subtitle'
 import SearchBar from '../shared/SearchBar'
@@ -89,11 +89,11 @@ const Home = () => {
       <Col lg= '6 '>
         <div className="experience__content">
           <Subtitle subtitle={'Experience'}/>
-          <h2>with our all experience<br/>we will serve you</h2>
+          <h2>Với tất cả kinh nghiệm<br/>Chúng tôi sẽ phục vụ bạn</h2>
           <p>
-            Lorem isum dolor sit amet. consectetur adipisicing elit.
+          Với nhiều năm kinh nghiệm trong ngành du lịch, chúng tôi tự tin khẳng định rằng chúng tôi sẽ làm hài lòng các khách hàng của mình.
             <br/>
-            Quas aliquam , hic tempora inventore suscipit unde
+            Chúng tôi hiểu rằng mỗi chuyến du lịch là một trải nghiệm độc đáo, và chúng tôi cam kết sẽ tạo ra những trải nghiệm tuyệt vời cho bạn.
           </p>
         </div>
         <div className="counter__wrapper d-flex align-items-center gap-5">
