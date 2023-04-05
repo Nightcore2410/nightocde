@@ -2,7 +2,7 @@
 
 .common__section{
     background: linear-gradient(rgb(0,0,0,0.45),rgb(0,0,0,0.45)),
-    url('../assets/images/hero-img04.jpg') no-repeat center center;
+    url('../../assets/images/hero-img04.jpg') no-repeat center center;
     background-size: cover;
     height: 300px;
     display: flex;
