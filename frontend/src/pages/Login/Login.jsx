@@ -6,7 +6,7 @@ import loginImg from "../../assets/images/login1.png";
 import userIcon from "../../assets/images/user.png";
 import Newsletter from "../../shared/Newsletter";
 import { AuthContext } from "../../context/AuthContext";
-import { BASE_URL } from "../../utlis/config";
+import { BASE_URL } from "../../utils/config";
 
 const Login = () => {
   const [credentials, setCredentials] = useState({

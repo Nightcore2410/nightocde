@@ -2,7 +2,7 @@ import React, { useState, useContext } from "react";
 import "./booking.css";
 import { Form, FormGroup, ListGroup, ListGroupItem, Button } from "reactstrap";
 import { useNavigate } from "react-router-dom";
-import { BASE_URL } from "../../utlis/config";
+import { BASE_URL } from "../../utils/config";
 import { AuthContext } from "../../context/AuthContext";
 
 const Booking = ({ tour, avgRating }) => {

@@ -11,6 +11,7 @@ import Tours from "./pages/Tours/index";
 import ToursDetails from "./pages/TourDetails/index";
 import ThankYou from "./pages/ThankYou/index";
 import SearchResultList from "./pages/Search/index";
+import HomeAdmin from "./pages/Admin/HomeAdmin";
 
 function App() {
   return (
@@ -25,7 +26,9 @@ function App() {
         <Route path="thank-you" element={<ThankYou />} />
         <Route path="tours/search" element={<SearchResultList />} />
       </Route>
-      <Route path="admin" element={<AdminTemplate />}></Route>
+      <Route path="admin" element={<AdminTemplate />}>
+        <Route index element={<HomeAdmin />} />
+      </Route>
     </Routes>
   );
 }

@@ -6,7 +6,7 @@ import SearchBar from "../../shared/SearchBar";
 import Newsletter from "../../shared/Newsletter";
 import { Container, Row, Col } from "reactstrap";
 import useFetch from "../../hooks/useFetch";
-import { BASE_URL } from "../../utlis/config";
+import { BASE_URL } from "../../utils/config";
 
 const Tours = () => {
   const [pagaCount, setPageCount] = useState(0);
