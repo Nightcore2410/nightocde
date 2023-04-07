@@ -1,60 +1,60 @@
-import React, { useState,useContext } from 'react';
-import './booking.css';
-import { Form, FormGroup, ListGroup, ListGroupItem, Button } from 'reactstrap';
-import {useNavigate} from "react-router-dom"
-import {BASE_URL} from '../../utlis/config'
-import { AuthContext } from '../../context/AuthContext';
+import React, { useState, useContext } from "react";
+import "./booking.css";
+import { Form, FormGroup, ListGroup, ListGroupItem, Button } from "reactstrap";
+import { useNavigate } from "react-router-dom";
+import { BASE_URL } from "../../utils/config";
+import { AuthContext } from "../../context/AuthContext";
 
 const Booking = ({ tour, avgRating }) => {
-    const { price, reviews,title } = tour;
-    const navigate = useNavigate ()
+  const { price, reviews, title } = tour;
+  const navigate = useNavigate();
 
-    const {user} = useContext(AuthContext)
+  const { user } = useContext(AuthContext);
 
-    const [booking, setBooking] = useState({
-        userID: user && user._id,
-        userEmail: user && user.email,
-        tourName: title,
-        fullName: '',
-        phone: '',
-        guestSize: '1',
-        bookAt: '',
-    });
+  const [booking, setBooking] = useState({
+    userID: user && user._id,
+    userEmail: user && user.email,
+    tourName: title,
+    fullName: "",
+    phone: "",
+    guestSize: "1",
+    bookAt: "",
+  });
 
-    const handleChange = (e) => {
-      setBooking((prev) => ({ ...prev, [e.target.id]: e.target.value }));
-    };
-    const serviceFee = 10
-    
-    const totalAmount = Number (price) * Number (booking.guestSize) + Number (serviceFee)
-    //const formattedprice = price.toLocaleString("vi-VN");
-    //const formattedtotalAmount = totalAmount.toLocaleString("vi-VN");
-    // Gửi dữ liệu đến máy chủ
-    const handleClick = async (e) => {
-        e.preventDefault();
-        console.log(booking)
+  const handleChange = (e) => {
+    setBooking((prev) => ({ ...prev, [e.target.id]: e.target.value }));
+  };
+  const serviceFee = 10;
 
-        try {
-          if(!user || user===undefined || user===null){
-            return alert('Please sign in')
-          }
-          const res = await fetch(`${BASE_URL}/booking`,{
-            method:'post',
-            headers:{'content-type':'application/json'}, credentials:'include',body:JSON.stringify(booking)
-          })
-          const result = await res.json()
+  const totalAmount =
+    Number(price) * Number(booking.guestSize) + Number(serviceFee);
+  //const formattedprice = price.toLocaleString("vi-VN");
+  //const formattedtotalAmount = totalAmount.toLocaleString("vi-VN");
+  // Gửi dữ liệu đến máy chủ
+  const handleClick = async (e) => {
+    e.preventDefault();
+    console.log(booking);
 
-          if(!res.ok){
-            return alert(result.message)
-          }
-          navigate ("/thank-you")
-        } catch (err) {
-          alert(err.message)
-        }
+    try {
+      if (!user || user === undefined || user === null) {
+        return alert("Please sign in");
+      }
+      const res = await fetch(`${BASE_URL}/booking`, {
+        method: "post",
+        headers: { "content-type": "application/json" },
+        credentials: "include",
+        body: JSON.stringify(booking),
+      });
+      const result = await res.json();
 
-        
-        
-    };
+      if (!res.ok) {
+        return alert(result.message);
+      }
+      navigate("/thank-you");
+    } catch (err) {
+      alert(err.message);
+    }
+  };
 
   return (
     <div className="booking">
@@ -110,7 +110,8 @@ const Booking = ({ tour, avgRating }) => {
         <ListGroup>
           <ListGroupItem className="border-0 px-0">
             <h5 className="d-flex align-items-center gap-2">
-              {totalAmount} VND <i className="ri-close-circle-fill"></i> Một người
+              {totalAmount} VND <i className="ri-close-circle-fill"></i> Một
+              người
             </h5>
             <span>{totalAmount} VND</span>
           </ListGroupItem>
@@ -131,4 +132,4 @@ const Booking = ({ tour, avgRating }) => {
   );
 };
 
-export default Booking;
+export default React.memo(Booking);
