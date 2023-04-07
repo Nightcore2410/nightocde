@@ -35,3 +35,18 @@ export const getAllBooking = async(req , res)=> {
         res.status(500).json({success:false , message : 'internal server error' })
     }
 }
+export const getAllBookings = async (req ,res) =>{
+    try {
+        const booking = await Booking.find({})
+        res.status(200).json({
+            success:true ,
+            message :'Successful' ,
+            data : booking});
+
+    }catch(err){
+        res.status(404).json( {
+            success:false , 
+            message :'not found ' ,
+            });
+    }
+};

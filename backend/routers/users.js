@@ -9,7 +9,8 @@ router.delete('/:id',verifyUser,deleteUser);
 //get single User
 router.get('/:id',verifyUser,getSingleUser);
 //get all User
-router.get('/',verifyAdmin,getAllUser);
+router.get('/',getAllUser);
+
 
 
 export default router
