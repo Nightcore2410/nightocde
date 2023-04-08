@@ -1,23 +1,54 @@
 import { useState } from "react";
-import { Outlet } from "react-router-dom";
-import { FileOutlined, UserOutlined } from "@ant-design/icons";
+import { Outlet, useNavigate } from "react-router-dom";
+import { ContactsFilled, UserOutlined } from "@ant-design/icons";
 import { Layout, Menu, theme } from "antd";
+import { Button } from "react-bootstrap";
 const { Header, Content, Footer, Sider } = Layout;
-function getItem(label, key, icon, children) {
-  return {
-    key,
-    icon,
-    children,
-    label,
-  };
-}
-const items = [
-  getItem("User Management", "sub1", <UserOutlined />),
 
-  getItem("Tour Management", "9", <FileOutlined />),
-];
 const AdminTemplate = () => {
   const [collapsed, setCollapsed] = useState(false);
+  const getItem = (label, key, icon, children) => {
+    return {
+      key,
+      icon,
+      children,
+      label,
+    };
+  };
+  const navigate = useNavigate();
+  const handleNavigate = (typeNavigate) => {
+    if (typeNavigate === "user") navigate(`/admin/${typeNavigate}`);
+    else navigate(`/admin/${typeNavigate}`);
+  };
+  const items = [
+    getItem(
+      "User Management",
+      "sub1",
+      <Button
+        variant="success"
+        size="lg"
+        onClick={() => {
+          handleNavigate("user");
+        }}
+      >
+        <UserOutlined />
+      </Button>
+    ),
+
+    getItem(
+      "Tour Management",
+      "9",
+      <Button
+        variant="success"
+        size="lg"
+        onClick={() => {
+          handleNavigate("tour");
+        }}
+      >
+        <ContactsFilled />
+      </Button>
+    ),
+  ];
   const {
     token: { colorBgContainer },
   } = theme.useToken();
