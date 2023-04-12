@@ -10,7 +10,7 @@ const AdminTemplate = () => {
   const [collapsed, setCollapsed] = React.useState(false);
   const getItem = (label, key, icon, children) => {
     return {
-      key,
+      key, 
       icon,
       children,
       label,
