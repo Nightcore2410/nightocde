@@ -1,26 +1,34 @@
-import { useState } from "react";
-import { Outlet } from "react-router-dom";
-import { FileOutlined, UserOutlined } from "@ant-design/icons";
-import { Layout, Menu, theme } from "antd";
-const { Header, Content, Footer, Sider } = Layout;
-function getItem(label, key, icon, children) {
-  return {
-    key,
-    icon,
-    children,
-    label,
-  };
-}
-const items = [
-  getItem("User Management", "sub1", <UserOutlined />),
+import React from "react";
+import { Outlet, useNavigate } from "react-router-dom";
+import { ContactsFilled, UserOutlined } from "@ant-design/icons";
+import { Layout, Menu } from "antd";
 
-  getItem("Tour Management", "9", <FileOutlined />),
-];
+const { Content, Footer, Sider } = Layout;
+
 const AdminTemplate = () => {
-  const [collapsed, setCollapsed] = useState(false);
-  const {
-    token: { colorBgContainer },
-  } = theme.useToken();
+  const navigate = useNavigate();
+  const [collapsed, setCollapsed] = React.useState(false);
+  const getItem = (label, key, icon, children) => {
+    return {
+      key,
+      icon,
+      children,
+      label,
+    };
+  };
+  const handleMenuItemClick = (key) => {
+    if (key === "sub1") {
+      navigate("/admin/user");
+    } else if (key === "9") {
+      navigate("/admin/tour");
+    }
+  };
+
+  const items = [
+    getItem("User Management", "sub1", <UserOutlined />),
+
+    getItem("Tour Management", "9", <ContactsFilled />),
+  ];
   return (
     <Layout
       style={{
@@ -44,16 +52,13 @@ const AdminTemplate = () => {
           theme="dark"
           defaultSelectedKeys={["1"]}
           mode="inline"
-          items={items}
+          items={items.map((item) => ({
+            ...item,
+            onClick: () => handleMenuItemClick(item.key), // Gọi hàm callback khi click vào menu item
+          }))}
         />
       </Sider>
       <Layout className="site-layout" style={{ padding: 0 }}>
-        <Header
-          style={{
-            padding: 0,
-            background: colorBgContainer,
-          }}
-        />
         <Content
           style={{
             margin: "0 16px",

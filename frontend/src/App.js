@@ -14,26 +14,30 @@ import SearchResultList from "./pages/Search/index";
 import Dashboard from "./pages/Admin/Dashboard/index";
 import Tour from "./pages/Admin/Tour/index";
 import HomeAdmin from "./pages/Admin/index";
+import Loading from "./components/Loading/index";
 
 function App() {
   return (
-    <Routes>
-      <Route path="" element={<HomeTemplate />}>
-        <Route index element={<Home />} />
-        <Route path="login" element={<Login />} />
-        <Route path="register" element={<Register />} />
-        <Route path="about" element={<About />} />
-        <Route path="tours" element={<Tours />} />
-        <Route path="tours/:id" element={<ToursDetails />} />
-        <Route path="thank-you" element={<ThankYou />} />
-        <Route path="tours/search" element={<SearchResultList />} />
-      </Route>
-      <Route path="admin" element={<AdminTemplate />}>
-        <Route index element={<HomeAdmin />} />
-        <Route path="user" element={<Dashboard />} />
-        <Route path="tour" element={<Tour />} />
-      </Route>
-    </Routes>
+    <React.Fragment>
+      <Loading />
+      <Routes>
+        <Route path="" element={<HomeTemplate />}>
+          <Route index element={<Home />} />
+          <Route path="login" element={<Login />} />
+          <Route path="register" element={<Register />} />
+          <Route path="about" element={<About />} />
+          <Route path="tours" element={<Tours />} />
+          <Route path="tours/:id" element={<ToursDetails />} />
+          <Route path="thank-you" element={<ThankYou />} />
+          <Route path="tours/search" element={<SearchResultList />} />
+        </Route>
+        <Route path="admin" element={<AdminTemplate />}>
+          <Route index element={<HomeAdmin />} />
+          <Route path="user" element={<Dashboard />} />
+          <Route path="tour" element={<Tour />} />
+        </Route>
+      </Routes>
+    </React.Fragment>
   );
 }
 

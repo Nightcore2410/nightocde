@@ -1,0 +1,11 @@
+.loading {
+    z-index: 999999999;
+    position: absolute;
+    top: 150px;
+    left: 600px;
+}
+
+.loading img {
+  object-fit: cover;
+  width: 100%;
+}

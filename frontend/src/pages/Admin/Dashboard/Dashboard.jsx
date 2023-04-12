@@ -1,6 +1,6 @@
 import React from "react";
-import { Space, Button } from "antd";
-import { Table } from "reactstrap";
+import { Space, Table } from "antd";
+import Button from "react-bootstrap/Button";
 import { useDispatch, useSelector } from "react-redux";
 import {
   deleteUserApi,
@@ -9,64 +9,87 @@ import {
 
 const Dashboard = () => {
   const dispatch = useDispatch();
+  const userData = useSelector((state) => state.userReducer.userInfo);
+
   const getAllUser = () => {
     const actionThunk = getAllUserApi();
     dispatch(actionThunk);
   };
-  const handleDeleteUser = (userId) => {
-    dispatch(deleteUserApi(userId));
-  };
+
   React.useEffect(() => {
     getAllUser();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const userData = useSelector((state) => state.userReducer.userInfo);
-  const renderDataTable = () => {
-    return userData.map((user, index) => (
-      <tr key={index}>
-        <th scope="row">{user._id}</th>
-        <td>{user.username}</td>
-        <td>{user.email}</td>
-        <td>{user.password}</td>
-        <td>{user.role}</td>
-        <td>
-          <Space>
-            <Button type="primary" style={{ background: "#389e0d" }}>
-              Adding
-            </Button>
-            <Button
-              type="primary"
-              style={{ background: "#fa541c" }}
-              onClick={() => {
-                handleDeleteUser(user._id);
-              }}
-            >
-              Delete
-            </Button>
-            <Button type="primary" style={{ background: "#001d66" }}>
-              Edit
-            </Button>
-          </Space>
-        </td>
-      </tr>
-    ));
+  const handleDeleteUser = (userId) => {
+    const actionThunk = deleteUserApi(userId);
+    dispatch(actionThunk);
   };
+  const columns = [
+    {
+      title: "Id",
+      dataIndex: "_id",
+      key: "_id",
+    },
+    {
+      title: "Username",
+      dataIndex: "username",
+      key: "name",
+    },
+    {
+      title: "Email",
+      dataIndex: "email",
+      key: "email",
+    },
+
+    {
+      title: "Password",
+      dataIndex: "password",
+      key: "password",
+    },
+
+    {
+      title: "Role",
+      key: "role",
+      dataIndex: "role",
+    },
+    {
+      title: "Action",
+      key: "action",
+      render: (record) => (
+        <Space size="middle">
+          <div className="container">
+            <div className="row">
+              <div className="col-4">
+                <Button variant="info">Edit</Button>
+              </div>
+              <div
+                className="col-4"
+                onClick={() => {
+                  handleDeleteUser(record._id);
+                }}
+              >
+                <Button variant="danger">Delete</Button>
+              </div>
+            </div>
+          </div>
+        </Space>
+      ),
+    },
+  ];
+
   return (
-    <>
-      <Table responsive style={{ padding: 0, textAlign: "center" }}>
-        <thead>
-          <tr>
-            <th>Id</th>
-            <th>Username</th>
-            <th>email</th>
-            <th>password</th>
-            <th>role</th>
-            <th>action</th>
-          </tr>
-        </thead>
-        <tbody>{renderDataTable()}</tbody>
-      </Table>
-    </>
+    <div>
+      <h1 className="text-center text-success fs-3 my-3">User Management</h1>
+      <Table
+        columns={columns}
+        pagination={{
+          position: ["bottomRight"],
+        }}
+        dataSource={userData}
+        id={userData._id}
+      />
+    </div>
   );
 };
 
