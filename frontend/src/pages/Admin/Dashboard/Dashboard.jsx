@@ -86,7 +86,7 @@ const Dashboard = () => {
           position: ["bottomRight"],
         }}
         dataSource={userData}
-        id={"id"}
+        id={userData._id}
       />
     </div>
   );

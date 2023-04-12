@@ -2,10 +2,11 @@ import React from "react";
 import { Outlet, useNavigate } from "react-router-dom";
 import { ContactsFilled, UserOutlined } from "@ant-design/icons";
 import { Layout, Menu } from "antd";
-import { Button } from "react-bootstrap";
+
 const { Content, Footer, Sider } = Layout;
 
 const AdminTemplate = () => {
+  const navigate = useNavigate();
   const [collapsed, setCollapsed] = React.useState(false);
   const getItem = (label, key, icon, children) => {
     return {
@@ -15,39 +16,18 @@ const AdminTemplate = () => {
       label,
     };
   };
-  const navigate = useNavigate();
-  const handleNavigate = (typeNavigate) => {
-    if (typeNavigate === "user") navigate(`/admin/${typeNavigate}`);
-    else navigate(`/admin/${typeNavigate}`);
+  const handleMenuItemClick = (key) => {
+    if (key === "sub1") {
+      navigate("/admin/user");
+    } else if (key === "9") {
+      navigate("/admin/tour");
+    }
   };
-  const items = [
-    getItem(
-      "User Management",
-      "sub1",
-      <Button
-        variant="success"
-        size="lg"
-        onClick={() => {
-          handleNavigate("user");
-        }}
-      >
-        <UserOutlined />
-      </Button>
-    ),
 
-    getItem(
-      "Tour Management",
-      "9",
-      <Button
-        variant="success"
-        size="lg"
-        onClick={() => {
-          handleNavigate("tour");
-        }}
-      >
-        <ContactsFilled />
-      </Button>
-    ),
+  const items = [
+    getItem("User Management", "sub1", <UserOutlined />),
+
+    getItem("Tour Management", "9", <ContactsFilled />),
   ];
   return (
     <Layout
@@ -72,7 +52,10 @@ const AdminTemplate = () => {
           theme="dark"
           defaultSelectedKeys={["1"]}
           mode="inline"
-          items={items}
+          items={items.map((item) => ({
+            ...item,
+            onClick: () => handleMenuItemClick(item.key), // Gọi hàm callback khi click vào menu item
+          }))}
         />
       </Sider>
       <Layout className="site-layout" style={{ padding: 0 }}>
