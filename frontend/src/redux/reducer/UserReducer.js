@@ -24,7 +24,7 @@ export default UserReducer.reducer;
 export const getAllUserApi = createAsyncThunk(
   "userReducer/getAllUserApi",
   async () => {
-    const result = await http.get("/users/");
+    const result = await http.get("/users");
     return result.data.data;
   }
 );

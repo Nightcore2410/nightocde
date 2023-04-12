@@ -18,6 +18,7 @@ const Dashboard = () => {
 
   React.useEffect(() => {
     getAllUser();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleDeleteUser = (userId) => {

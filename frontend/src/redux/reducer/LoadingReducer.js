@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { getAllUserApi, deleteUserApi } from "./UserReducer";
+import { getAllBookingTourApi } from "./BookingReducer";
 const initialState = {
   isLoading: false,
 };
@@ -25,6 +26,16 @@ const LoadingReducer = createSlice({
       state.isLoading = false;
     });
     buider.addCase(deleteUserApi.rejected, (state) => {
+      state.isLoading = false;
+    });
+
+    buider.addCase(getAllBookingTourApi.pending, (state) => {
+      state.isLoading = true;
+    });
+    buider.addCase(getAllBookingTourApi.fulfilled, (state) => {
+      state.isLoading = false;
+    });
+    buider.addCase(getAllBookingTourApi.rejected, (state) => {
       state.isLoading = false;
     });
   },
