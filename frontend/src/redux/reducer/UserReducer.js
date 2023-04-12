@@ -1,22 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { http } from "../../utils/setting/http";
 const initialState = {
-  userInfo: [
-    {
-      id: "1",
-      username: "a",
-      email: "demoahihi@gmail.com",
-      password: "123456",
-      role: "admin",
-    },
-    {
-      id: "2",
-      username: "b",
-      email: "demoahihi@gmail.com",
-      password: "123456",
-      role: "user",
-    },
-  ],
+  userInfo: [],
 };
 
 const UserReducer = createSlice({
