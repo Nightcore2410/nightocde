@@ -6,8 +6,7 @@ const HomeAdmin = () => {
   const navigate = useNavigate();
   const handleNavigate = (typeNavigate) => {
     if (typeNavigate === "user") navigate(`/admin/${typeNavigate}`);
-    else navigate(`/admin/${typeNavigate}`)
-    
+    else navigate(`/admin/${typeNavigate}`);
   };
   return (
     <React.Fragment>
@@ -19,17 +18,15 @@ const HomeAdmin = () => {
               <Card.Body>
                 <Card.Title className="text-center">User Management</Card.Title>
                 <Card.Text className="text-center">
-                  <Container>
-                    <Button
-                      variant="success"
-                      size="lg"
-                      onClick={() => {
-                        handleNavigate("user");
-                      }}
-                    >
-                      <UserOutlined />
-                    </Button>
-                  </Container>
+                  <Button
+                    variant="success"
+                    size="lg"
+                    onClick={() => {
+                      handleNavigate("user");
+                    }}
+                  >
+                    <UserOutlined />
+                  </Button>
                 </Card.Text>
               </Card.Body>
             </Card>
@@ -40,17 +37,15 @@ const HomeAdmin = () => {
               <Card.Body>
                 <Card.Title className="text-center">Tour Management</Card.Title>
                 <Card.Text className="text-center">
-                  <Container>
-                    <Button
-                      variant="success"
-                      size="lg"
-                      onClick={() => {
-                        handleNavigate("tour");
-                      }}
-                    >
-                      <ContactsFilled />
-                    </Button>
-                  </Container>
+                  <Button
+                    variant="success"
+                    size="lg"
+                    onClick={() => {
+                      handleNavigate("tour");
+                    }}
+                  >
+                    <ContactsFilled />
+                  </Button>
                 </Card.Text>
               </Card.Body>
             </Card>

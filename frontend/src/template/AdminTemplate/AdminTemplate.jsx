@@ -1,12 +1,12 @@
-import { useState } from "react";
+import React from "react";
 import { Outlet, useNavigate } from "react-router-dom";
 import { ContactsFilled, UserOutlined } from "@ant-design/icons";
-import { Layout, Menu, theme } from "antd";
+import { Layout, Menu } from "antd";
 import { Button } from "react-bootstrap";
-const { Header, Content, Footer, Sider } = Layout;
+const { Content, Footer, Sider } = Layout;
 
 const AdminTemplate = () => {
-  const [collapsed, setCollapsed] = useState(false);
+  const [collapsed, setCollapsed] = React.useState(false);
   const getItem = (label, key, icon, children) => {
     return {
       key,
@@ -49,9 +49,6 @@ const AdminTemplate = () => {
       </Button>
     ),
   ];
-  const {
-    token: { colorBgContainer },
-  } = theme.useToken();
   return (
     <Layout
       style={{
@@ -79,12 +76,6 @@ const AdminTemplate = () => {
         />
       </Sider>
       <Layout className="site-layout" style={{ padding: 0 }}>
-        <Header
-          style={{
-            padding: 0,
-            background: colorBgContainer,
-          }}
-        />
         <Content
           style={{
             margin: "0 16px",
